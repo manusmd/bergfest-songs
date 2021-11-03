@@ -6,7 +6,7 @@ function App(): JSX.Element {
   return (
     <div className={styles.container}>
       <main className={styles.content}>
-        <Title />
+        <Title name="Brgfst." />
         <form className={styles.form}>
           <input
             type="text"
