@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './App.module.css';
+import Title from './components/Title';
 
 function App(): JSX.Element {
   return (
-    <main className={styles.container}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>Bergfest.</h1>
-
+    <div className={styles.container}>
+      <main className={styles.content}>
+        <Title />
         <form className={styles.form}>
           <input
             type="text"
@@ -20,8 +20,8 @@ function App(): JSX.Element {
           />
           <input type="submit" className={styles.formSubmit} value="Submit" />
         </form>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
 
