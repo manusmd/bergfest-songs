@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Form.module.css';
 
-type formProps = {
-  field1Name: string;
-  field2Name: string;
-};
+function Form(): JSX.Element {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  console.log(firstName);
+  console.log(lastName);
 
-function Form({ field1Name, field2Name }: formProps): JSX.Element {
   return (
     <form className={styles.form}>
-      <input type="text" className={styles.formText} placeholder={field1Name} />
-      <input type="text" className={styles.formText} placeholder={field2Name} />
+      <input
+        type="text"
+        className={styles.formText}
+        placeholder="First Name"
+        onChange={(event) => setFirstName(event.target.value)}
+      />
+      <input
+        type="text"
+        className={styles.formText}
+        placeholder="Last name"
+        onChange={(event) => setLastName(event.target.value)}
+      />
       <input type="submit" className={styles.formSubmit} value="Submit" />
     </form>
   );

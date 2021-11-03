@@ -8,7 +8,7 @@ function App(): JSX.Element {
     <div className={styles.container}>
       <main className={styles.content}>
         <Title name="Brgfst." />
-        <Form field1Name="First Name" field2Name="Last name" />
+        <Form />
       </main>
     </div>
   );

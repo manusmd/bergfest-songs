@@ -24,3 +24,9 @@
   transition: background 1s;
   transition: color 0.5s;
 }
+
+@media only screen and (max-width: 500px) {
+  .form {
+    gap: 3rem;
+  }
+}
