@@ -1,25 +1,14 @@
 import React from 'react';
 import styles from './App.module.css';
-import Title from './components/Title';
+import Title from './components/Title/Title';
+import Form from './components/Form/Form';
 
 function App(): JSX.Element {
   return (
     <div className={styles.container}>
       <main className={styles.content}>
         <Title name="Brgfst." />
-        <form className={styles.form}>
-          <input
-            type="text"
-            className={styles.formText}
-            placeholder="First name"
-          />
-          <input
-            type="text"
-            className={styles.formText}
-            placeholder="Last name"
-          />
-          <input type="submit" className={styles.formSubmit} value="Submit" />
-        </form>
+        <Form field1Name="First Name" field2Name="Last name" />
       </main>
     </div>
   );
