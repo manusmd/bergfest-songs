@@ -1,0 +1,13 @@
+.title {
+  display: grid;
+  font-family: 'Bebas Neue', cursive;
+  writing-mode: vertical-rl;
+  transform: rotateZ(180deg);
+  color: #a67854;
+  font-size: 6rem;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  place-items: center;
+  letter-spacing: 1.5rem;
+}
