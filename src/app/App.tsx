@@ -5,9 +5,8 @@ function App(): JSX.Element {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.titleDiv}>
-          <h1 className={styles.title}>Bergfest.</h1>
-        </div>
+        <h1 className={styles.title}>Bergfest.</h1>
+
         <form className={styles.form}>
           <input
             type="text"

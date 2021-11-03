@@ -23,20 +23,16 @@
 }
 
 .title {
+  display: grid;
   font-family: 'Bebas Neue', cursive;
   writing-mode: vertical-rl;
   transform: rotateZ(180deg);
   color: #a67854;
   font-size: 6rem;
-}
-
-.titleDiv {
-  display: flex;
   height: 100%;
   width: 100%;
   background-color: black;
-  place-content: center;
-  align-items: center;
+  place-items: center;
 }
 
 .form {
