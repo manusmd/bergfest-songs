@@ -1,12 +1,15 @@
 import React, { FormEvent, useState } from 'react';
 import styles from './Form.module.css';
 
-function Form(): JSX.Element {
+type callback = {
+  updateName: (userName: string) => void;
+};
+
+function Form({ updateName }: callback): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState([]);
   const [disable, setDisable] = useState(false);
-  const [name, setName] = useState('');
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -52,14 +55,12 @@ function Form(): JSX.Element {
         className={styles.dropdown}
         onClick={handleSelectClick}
         onChange={(event) => {
-          setName(event.target.value);
-          console.log(name);
+          updateName(event.target.value);
         }}
-        value={name}
       >
         {allUsers}
       </select>
-      <h2>or</h2>
+      <h3>or</h3>
       <input
         type="text"
         className={styles.formText}
