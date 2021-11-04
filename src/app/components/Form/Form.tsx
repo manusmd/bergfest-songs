@@ -6,6 +6,7 @@ function Form(): JSX.Element {
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState([]);
   const [disable, setDisable] = useState(false);
+  const [name, setName] = useState('');
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -47,9 +48,18 @@ function Form(): JSX.Element {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <select className={styles.dropdown} onClick={handleSelectClick}>
+      <select
+        className={styles.dropdown}
+        onClick={handleSelectClick}
+        onChange={(event) => {
+          setName(event.target.value);
+          console.log(name);
+        }}
+        value={name}
+      >
         {allUsers}
       </select>
+      <h2>or</h2>
       <input
         type="text"
         className={styles.formText}
