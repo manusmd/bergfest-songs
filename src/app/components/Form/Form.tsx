@@ -4,6 +4,8 @@ import styles from './Form.module.css';
 function Form(): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [users, setUsers] = useState([]);
+  const [disable, setDisable] = useState(false);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -17,10 +19,37 @@ function Form(): JSX.Element {
         lastName: lastName,
       }),
     });
+    setDisable(true);
   }
+
+  async function getUsers() {
+    const response = await fetch('https://json-server.machens.dev/users');
+    const users = await response.json();
+    return users;
+  }
+
+  type OptionType = {
+    id: number;
+    firstName: string;
+    lastName: string;
+  };
+
+  async function handleSelectClick(event: FormEvent) {
+    event.preventDefault();
+    const users = await getUsers();
+    setUsers(users);
+  }
+  const allUsers = users.map(({ id, firstName, lastName }: OptionType) => (
+    <option key={id}>
+      {firstName} {lastName}
+    </option>
+  ));
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <select className={styles.dropdown} onClick={handleSelectClick}>
+        {allUsers}
+      </select>
       <input
         type="text"
         className={styles.formText}
@@ -35,7 +64,12 @@ function Form(): JSX.Element {
         value={lastName}
         onChange={(event) => setLastName(event.target.value)}
       />
-      <input type="submit" className={styles.formSubmit} value="Submit" />
+      <input
+        disabled={disable}
+        type="submit"
+        className={styles.formSubmit}
+        value="Submit"
+      />
     </form>
   );
 }
