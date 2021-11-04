@@ -13,12 +13,14 @@ function Form(): JSX.Element {
         type="text"
         className={styles.formText}
         placeholder="First Name"
+        value={firstName}
         onChange={(event) => setFirstName(event.target.value)}
       />
       <input
         type="text"
         className={styles.formText}
         placeholder="Last name"
+        value={lastName}
         onChange={(event) => setLastName(event.target.value)}
       />
       <input type="submit" className={styles.formSubmit} value="Submit" />
