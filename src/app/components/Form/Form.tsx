@@ -58,6 +58,7 @@ function Form({ updateName }: callback): JSX.Element {
           updateName(event.target.value);
         }}
       >
+        <option>Select User</option>
         {allUsers}
       </select>
       <h3>or</h3>

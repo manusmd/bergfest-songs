@@ -6,11 +6,17 @@ import Form from './components/Form/Form';
 function App(): JSX.Element {
   const [name, setName] = useState<string | null>(null);
   console.log(name);
+  let content;
+  if (name) {
+    content = <p>Please add some songs</p>;
+  } else {
+    content = <Form updateName={setName} />;
+  }
   return (
     <div className={styles.container}>
       <main className={styles.content}>
-        <Title name="Brgfst." />
-        <Form updateName={(userName) => setName(userName)} />
+        <Title name={name ? 'Sngs.' : 'Brgfst.'} />
+        {content}
       </main>
     </div>
   );
