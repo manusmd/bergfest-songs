@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './Playlist.module.css';
 
 function Playlist(): JSX.Element {
   const [data, setData] = useState<song[]>([]);
@@ -13,9 +12,7 @@ function Playlist(): JSX.Element {
 
   return (
     <div>
-      <button className={styles.playlistBtn} onClick={getSongs}>
-        Show Playlist
-      </button>
+      <button onClick={getSongs}>Show Playlist</button>
       <ul>{allSongs}</ul>
     </div>
   );
