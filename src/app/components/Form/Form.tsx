@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import styles from './Form.module.css';
 
 type callback = {
@@ -26,10 +26,14 @@ function Form({ updateName }: callback): JSX.Element {
     setDisable(true);
   }
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   async function getUsers() {
     const response = await fetch('https://json-server.machens.dev/users');
     const users = await response.json();
-    return users;
+    setUsers(users);
   }
 
   type OptionType = {
@@ -38,11 +42,6 @@ function Form({ updateName }: callback): JSX.Element {
     lastName: string;
   };
 
-  async function handleSelectClick(event: FormEvent) {
-    event.preventDefault();
-    const users = await getUsers();
-    setUsers(users);
-  }
   const allUsers = users.map(({ id, firstName, lastName }: OptionType) => (
     <option key={id}>
       {firstName} {lastName}
@@ -53,7 +52,6 @@ function Form({ updateName }: callback): JSX.Element {
     <form className={styles.form} onSubmit={handleSubmit}>
       <select
         className={styles.dropdown}
-        onClick={handleSelectClick}
         onChange={(event) => {
           updateName(event.target.value);
         }}
